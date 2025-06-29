@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    gap: 40px;
+  }
+
+  .bomba {
+    width: 120px;
+    height: 120px;
+    background-image: url('bomba.png'); /* Imagen por defecto */
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.3s ease;
+    position: relative;
+  }
+
+  /* Extra: mensaje oculto */
+  .mensaje {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: yellow;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Explosión al pasar el ratón (menos una especial) */
+  .bomba:not(.salvadora):hover {
+    background-image: url('explosion.png');
+  }
+
+  /* Bomba salvadora con extintor o agua */
+  .bomba.salvadora:hover {
+    background-image: url('agua.png');
+  }
+
+  /* Mostrar mensaje en hover */
+  .bomba:hover .mensaje {
+    opacity: 1;
+    visibility: visible;
+  }
